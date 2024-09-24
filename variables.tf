@@ -36,3 +36,8 @@ variable "frontend_sg_name" {
     default = "frontend-allow-all-traffic"
 }
 
+variable "backend_sg_name" {
+    type = string
+    default = "backend-allow-ssh"
+}
+
