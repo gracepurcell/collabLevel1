@@ -41,3 +41,14 @@ variable "backend_sg_name" {
     default = "backend-allow-ssh"
 }
 
+variable "backend_sg_name" {
+    type = string
+    default = "backend-allow-ssh"
+}
+
+variable "db-username" {
+  type = string
+}
+variable "db-password" {
+  type = string
+}
