@@ -7,7 +7,7 @@ resource "aws_db_instance" "my_rds" {
   username             = var.db-username
   password             = var.db-password
   parameter_group_name = "default.mysql8.0"
-  skip_final_snapshot  = true  
+  skip_final_snapshot  = true
 }
 
 resource "aws_security_group" "db_sec_group" {
@@ -17,7 +17,7 @@ resource "aws_security_group" "db_sec_group" {
     from_port   = 3306
     to_port     = 3306
     protocol    = "tcp"
-    cidr_blocks = [aws_instance.backend_ec2.cidr_blocks] 
+    cidr_blocks = [aws_instance.backend_ec2.cidr_blocks]
   }
   egress {
     from_port   = 0
