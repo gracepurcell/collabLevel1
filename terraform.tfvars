@@ -9,7 +9,7 @@ backend_subnet_name  = "Backend Subnet"
 frontend_subnet_name = "Frontend Subnet"
 
 availability_zones = {
-    frontend = "eu-west-2a" 
-    backend = "eu-west-2b"
-} #london azs
+  frontend = "eu-west-2a"
+  backend  = "eu-west-2b"
+}                        #london azs
 aws_region = "eu-west-2" #london region
