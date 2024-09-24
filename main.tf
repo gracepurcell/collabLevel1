@@ -3,7 +3,6 @@ provider "aws" {
 }
 
 resource "aws_default_vpc" "vpc" {
-  instance_tenancy = "default"
   tags = {
     Name = var.vpc_name
   }
@@ -20,14 +19,12 @@ resource "aws_instance" "frontend_ec2" {
 
 resource "aws_default_subnet" "frontend" {
   availability_zone = var.availability_zones["frontend"]
-  cidr_block        = var.frontend_cidr_block
   tags = {
     Name = var.frontend_subnet_name
   }
 }
 resource "aws_default_subnet" "backend" {
   availability_zone = var.availability_zones["backend"]
-  cidr_block        = var.backend_cidr_block
   tags = {
     Name = var.backend_subnet_name
   }
