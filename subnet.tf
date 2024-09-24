@@ -11,5 +11,3 @@ resource "aws_default_subnet" "backend" {
     Name = var.backend_subnet_name
   }
 }
-
-}
