@@ -9,6 +9,7 @@ resource "aws_instance" "frontend_ec2" {
 
   provisioner "remote-exec" {
     inline = [
+
       "sudo apt update",
       "sudo apt install -y nginx"
     ]
