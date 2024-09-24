@@ -17,12 +17,12 @@ resource "aws_db_instance" "my_rds" {
 
 resource "aws_security_group" "db_sec_group" {
   name        = "allow_mySQL"
-  description = "Allow MySQL"
+  description = "Allow MySQL to backend ec2"
   ingress {
     from_port   = 3306
     to_port     = 3306
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["0.0.0.0/0"] #change to backend EC2
   }
   egress {
     from_port   = 0
