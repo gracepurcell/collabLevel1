@@ -46,14 +46,14 @@ resource "aws_security_group" "backend_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [aws_default_subnet.frontend.cidr_block]
+    cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
     description = "TLS from app"
     from_port   = 8080
     to_port     = 8080
     protocol    = "tcp"
-    cidr_blocks = [aws_default_subnet.frontend.cidr_block]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {

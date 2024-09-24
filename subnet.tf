@@ -12,3 +12,4 @@ resource "aws_default_subnet" "backend" {
   }
 }
 
+}

@@ -31,7 +31,7 @@ resource "aws_security_group" "db_sec_group" {
     from_port   = 3306
     to_port     = 3306
     protocol    = "tcp"
-    cidr_blocks = [aws_default_subnet.backend.cidr_block]
+    cidr_blocks = [aws_default_subnet.backend.cidr_block] #need to fix
   }
   egress {
     from_port   = 0
