@@ -7,14 +7,14 @@ resource "aws_db_instance" "my_rds" {
   username             = var.db-username
   password             = var.db-password
   parameter_group_name = "default.mysql8.0"
-  skip_final_snapshot  = true  
+  skip_final_snapshot  = true
   vpc_security_group_ids = [aws_security_group.db_sec_group.id]
-  db_subnet_group_name = aws_db_subnet_group.default.name
+  db_subnet_group_name = aws_db_subnet_group.default_sg.name
   publicly_accessible  = false
 }
 
-# RDS Subnet Group (required even when using default subnets)
-resource "aws_db_subnet_group" "default" {
+# RDS Subnet Group 
+resource "aws_db_subnet_group" "default_sg" {
   name       = "db-subnet-group"
   subnet_ids = data.aws_subnet_ids.default.ids
 
@@ -31,7 +31,7 @@ resource "aws_security_group" "db_sec_group" {
     from_port   = 3306
     to_port     = 3306
     protocol    = "tcp"
-    cidr_blocks = [aws_instance.backend_ec2.cidr_blocks] 
+    cidr_blocks = [aws_instance.backend_ec2.cidr_blocks]
   }
   egress {
     from_port   = 0
