@@ -1,3 +1,8 @@
+variable "aws_region" {
+  description = "AWS region"
+  default     = "us-east-1"
+}
+
 variable "vpc_name" {
   type    = string
   default = "Our Vpc"
@@ -14,10 +19,6 @@ variable "instance_type" {
 
 variable "availability_zones" {
   type = map(string)
-  default = {
-    frontend = "eu-west-1a"
-    backend  = "eu-west-1b"
-  }
 }
 
 variable "frontend_subnet_name" {

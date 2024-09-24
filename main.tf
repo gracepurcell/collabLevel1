@@ -1,3 +1,7 @@
+provider "aws" {
+  region = var.aws_region
+}
+
 resource "aws_default_vpc" "vpc" {
   instance_tenancy = "default"
   tags = {
