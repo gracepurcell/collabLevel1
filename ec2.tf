@@ -9,15 +9,16 @@ resource "aws_instance" "frontend_ec2" {
 
   provisioner "remote-exec" {
     inline = [
-        "sudo apt update",
-        "sudo apt install -y nginx"
+
+      "sudo apt update",
+      "sudo apt install -y nginx"
     ]
 
     connection {
-        type = "ssh"
-        user = "ubuntu"
-        private_key = file("~/Desktop/london_key.pem")
-        host = self.public_ip
+      type        = "ssh"
+      user        = "ubuntu"
+      private_key = file("~/Desktop/london_key.pem")
+      host        = self.public_ip
     }
   }
 }

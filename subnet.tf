@@ -10,4 +10,4 @@ resource "aws_default_subnet" "backend" {
   tags = {
     Name = var.backend_subnet_name
   }
-}
+
