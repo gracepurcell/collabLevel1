@@ -32,6 +32,22 @@ resource "aws_instance" "backend_ec2" {
   vpc_security_group_ids      = [aws_security_group.backend_sg.id]
   subnet_id                   = aws_default_subnet.backend.id
   associate_public_ip_address = true
+  user_data              = <<-EOF
+        #!/bin/bash
+        sudo apt update -y
+        sudo apt install -y nodejs
+        sudo apt install -y mysql-server
+        sudo systemctl enable mysql
+        # Set up a simple Express.js application
+        mkdir my-express-app
+        cd my-express-app
+
+        # Initialize the project
+        npm init -y
+
+        # Install Express.js and MySQL library
+        npm install express mysql2
+        EOF
   
   provisioner "remote-exec" {
     inline = [
