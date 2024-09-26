@@ -6,22 +6,26 @@ resource "aws_instance" "frontend_ec2" {
   subnet_id                   = aws_default_subnet.frontend.id
   key_name                    = "london_key"
   associate_public_ip_address = true
+  user_data = <<-EOF
+    #!bin/bash
+    sudo apt update
+    sudo apt install -y nginx
+    sudo systemctl start nginx
+    sudo systemctl enable nginx
+    echo "<html><body><h1>Hellloooooooo From Grace & Tassis Frontend VM</h1></body></html>" > /var/www/html/index.html
+    EOF
 
   provisioner "remote-exec" {
-    inline = [
-
-      "sudo apt update",
-      "sudo apt install -y nginx"
-
-      
-    ]
-
     connection {
       type        = "ssh"
       user        = "ubuntu"
       private_key = file("~/Desktop/london_key.pem")
       host        = self.public_ip
     }
+  }
+
+  tags = {
+    Name = "Tassi & Graces Frontend Instance"
   }
 }
 
